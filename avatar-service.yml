@@ -1,0 +1,14 @@
+server:
+  port: 8085
+spring:
+  data:
+    mongodb:
+      host: ${MONGO_DB_HOST:localhost}
+      port: ${MONGO_DB_PORT:27017}
+      database: ${MONGO_DB:spring_messenger}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true

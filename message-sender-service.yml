@@ -1,0 +1,15 @@
+server:
+  port: 8084
+
+topic:
+  name: t.message
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_URL:localhost:9093}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
