@@ -24,6 +24,10 @@ spring:
           uri: lb://avatar-service
           predicates:
             - Path=/api/avatars/**
+        - id: jwt
+          uri: lb://jwt-server-service
+          predicates:
+            - Path=/api/jwt/**            
 eureka:
   client:
     serviceUrl:
