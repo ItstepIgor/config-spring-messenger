@@ -1,0 +1,13 @@
+server:
+  port: 8089
+base:
+  url:
+    rest:
+      template:
+        users : ${USER_SERVICE_URL:http://localhost:8765}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
