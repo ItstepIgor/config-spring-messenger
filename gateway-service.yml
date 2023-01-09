@@ -27,7 +27,14 @@ spring:
         - id: jwt
           uri: lb://jwt-server-service
           predicates:
-            - Path=/api/jwt/**            
+            - Path=/api/jwt/** 
+        - id: resource
+          uri: http://127.0.0.1:8082
+          predicates:
+            - Path=/resource
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie              
 eureka:
   client:
     serviceUrl:
