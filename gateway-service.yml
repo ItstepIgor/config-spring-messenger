@@ -8,10 +8,10 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: user
-          uri: lb://user-service
-          predicates:
-            - Path=/api/users/**
+#         - id: user
+#           uri: lb://user-service
+#           predicates:
+#             - Path=/api/users/**
         - id: message
           uri: lb://message-sender-service
           predicates:
