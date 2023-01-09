@@ -11,7 +11,10 @@ spring:
         - id: user
           uri: lb://user-service
           predicates:
-            - Path=/api/users/**
+            - Path=/resource
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie    
         - id: message
           uri: lb://message-sender-service
           predicates:
@@ -28,13 +31,7 @@ spring:
           uri: lb://jwt-server-service
           predicates:
             - Path=/api/jwt/** 
-        - id: resource
-          uri: http://127.0.0.1:8082
-          predicates:
-            - Path=/resource
-          filters:
-            - TokenRelay=
-            - RemoveRequestHeader=Cookie              
+            
 eureka:
   client:
     serviceUrl:
