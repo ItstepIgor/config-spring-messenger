@@ -7,27 +7,29 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-#       routes:
-#         - id: user
-#           uri: lb://user-service
-#           predicates:
-#             - Path=/api/users/**
-#         - id: message
-#           uri: lb://message-sender-service
-#           predicates:
-#             - Path=/api/messages/**
-#         - id: chat
-#           uri: lb://chat-service
-#           predicates:
-#             - Path=/api/chats/**
-#         - id: avatar
-#           uri: lb://avatar-service
-#           predicates:
-#             - Path=/api/avatars/**
-#         - id: jwt
-#           uri: lb://jwt-server-service
-#           predicates:
-#             - Path=/api/jwt/** 
+      routes:
+        - id: user
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - TokenRelay=
+        - id: message
+          uri: lb://message-sender-service
+          predicates:
+            - Path=/api/messages/**
+        - id: chat
+          uri: lb://chat-service
+          predicates:
+            - Path=/api/chats/**
+        - id: avatar
+          uri: lb://avatar-service
+          predicates:
+            - Path=/api/avatars/**
+        - id: jwt
+          uri: lb://jwt-server-service
+          predicates:
+            - Path=/api/jwt/** 
             
 eureka:
   client:
