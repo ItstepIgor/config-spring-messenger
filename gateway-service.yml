@@ -19,6 +19,9 @@ spring:
           uri: lb://message-sender-service
           predicates:
             - Path=/api/messages/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie            
         - id: chat
           uri: lb://chat-service
           predicates:
@@ -27,6 +30,9 @@ spring:
           uri: lb://avatar-service
           predicates:
             - Path=/api/avatars/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie            
         - id: jwt
           uri: lb://jwt-server-service
           predicates:
